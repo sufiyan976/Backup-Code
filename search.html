@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- basic search engine to understand -->
+    <input type="text" id="search" name="search" >
+    <button type="button" id="button" name="button" onclick="searchproducts()" class="button">Search</button>
+  
+  <!-- you can add id = productlist to your body -->
+  <!-- you can add class = product for your every product div -->
+    <div id="productList"> 
+    <div class="product">Product 1</div>
+    <div class="product">Product 2</div>
+    <div class="product">Product 3</div>
+   Add more products 
+  </div>
+
+  <script>
+    // java script for search
+    function searchproducts(){
+      const searchInput = document.querySelector('#search');
+      const searchButton = document.querySelector('#button');
+      const productList = document.querySelector('#productList');
+    
+      searchButton.addEventListener('click', function() {
+        const searchTerm = searchInput.value.toLowerCase();
+        const products = productList.querySelectorAll('.product');
+    
+      // Hide all products
+       products.forEach(function(product) {
+         product.style.display = 'none';
+       });
+    
+      // Show matching products
+        products.forEach(function(product) {
+          if (product.textContent.toLowerCase().indexOf(searchTerm) !== -1) {
+            product.style.display = 'block';
+          }
+        });
+      });
+    }</script>
+</body>
+</html>
